@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: talentedo-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python seed.py && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ADMIN_USERNAME
+        value: suraj
+      - key: ADMIN_PASSWORD
+        value: "12345"
+      - key: NETLIFY_URL
+        value: https://talentedo.netlify.app
+      - key: PYTHON_VERSION
+        value: "3.11.6"
